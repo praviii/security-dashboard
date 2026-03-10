@@ -1,5 +1,4 @@
-import { LoginComponent } from "../features"
-
+import { LoginComponent } from "@/features"
 
 function LoginPage() {
   return (

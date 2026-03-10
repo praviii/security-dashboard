@@ -1,22 +1,24 @@
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "../../components/ui/button"
-import { Input } from "../../components/ui/input"
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label"
+import { useNavigate } from "react-router"
 
 function LoginComponent() {
+    const navigate = useNavigate();
     return (
-        <Card className="min-w-120">
-            <CardHeader>
-                <div className="flex items-center gap-1 font-bold text-blue-300">
-                    <span className="bg-blue-300 p-1 rounded-md font-bold text-white">STERNA</span> SELYEK
-                </div>
-                <CardTitle className="font-bold">Login to your account</CardTitle>
-                <CardDescription>
-                    Enter your email below to login to your account
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <form>
+        <form>
+            <Card className="min-w-120">
+                <CardHeader>
+                    <div className="flex items-center gap-1 font-bold text-primary">
+                        <span className="bg-primary p-1 rounded-md font-bold text-white">STERNA</span> SELYEK
+                    </div>
+                    <CardTitle className="font-bold">Login to your account</CardTitle>
+                    <CardDescription>
+                        Enter your email & password/OTP to login
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
                     <div className="flex flex-col gap-6">
                         <div className="grid gap-2">
                             <Label htmlFor="email">Email</Label>
@@ -40,17 +42,17 @@ function LoginComponent() {
                             <Input id="password" type="password" placeholder="Enter password" required />
                         </div>
                     </div>
-                </form>
-            </CardContent>
-            <CardFooter className="flex-col gap-2">
-                <Button type="submit" className="w-full cursor-pointer">
-                    Login using password
-                </Button>
-                <Button variant="outline" className="w-full cursor-pointer">
-                    Login using OTP
-                </Button>
-            </CardFooter>
-        </Card>
+                </CardContent>
+                <CardFooter className="flex-col gap-2">
+                    <Button type="submit" className="w-full cursor-pointer" onClick={() => navigate('dashboard')}>
+                        Login using password
+                    </Button>
+                    <Button variant="outline" className="w-full cursor-pointer">
+                        Login using OTP
+                    </Button>
+                </CardFooter>
+            </Card>
+        </form>
     )
 }
 

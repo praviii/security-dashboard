@@ -6,19 +6,38 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 * {
   padding: none;
   margin: none;
+}
+
+#root {
+  min-height: 100%;
+  width: 100%;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   width: 100%;
   min-height: 100dvh;
-  background: #edfaff;
   display: flex;
-  align-items: center;
-  justify-content: center;
+
+  --s: 17px;
+  /* control the size*/
+  --c1: #f1fbfe;
+  --c2: #ebf8fe;
+
+  --c: #0000, var(--c1) .5deg 119.5deg, #0000 120deg;
+  --g1: conic-gradient(from 60deg at 56.25% calc(425%/6), var(--c));
+  --g2: conic-gradient(from 180deg at 43.75% calc(425%/6), var(--c));
+  --g3: conic-gradient(from -60deg at 50% calc(175%/12), var(--c));
+  background:
+    var(--g1), var(--g1) var(--s) calc(1.73*var(--s)),
+    var(--g2), var(--g2) var(--s) calc(1.73*var(--s)),
+    var(--g3) var(--s) 0, var(--g3) 0 calc(1.73*var(--s)) var(--c2);
+  background-size: calc(2*var(--s)) calc(3.46*var(--s));
+
 }
 
 :root {
@@ -28,7 +47,7 @@ body {
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: #2cc2fd;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -136,9 +155,11 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
