@@ -1,5 +1,3 @@
-import React from 'react'
-
 function DashboardStatComponent() {
     const statCards: {
         value: number;
@@ -42,7 +40,7 @@ function DashboardStatComponent() {
             {
                 statCards.map(item => (
                     <div style={{ background:item.color}} className={`flex flex-col gap-2 p-3 items-start flex-1 rounded-md`}>
-                        <div className='text-white text-sm font-bold'>{item.title}</div>
+                        <div className='text-white text-sm font-bold'>Total {item.title}</div>
                         <div className='text-white text-2xl font-extrabold'>{item.value}</div>
                     </div>
                 ))

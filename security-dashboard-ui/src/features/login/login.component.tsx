@@ -7,7 +7,7 @@ import { useNavigate } from "react-router"
 function LoginComponent() {
     const navigate = useNavigate();
     return (
-        <form>
+        <form className="w-full h-full flex items-center justify-center">
             <Card className="min-w-120">
                 <CardHeader>
                     <div className="flex items-center gap-1 font-bold text-primary">
@@ -21,7 +21,7 @@ function LoginComponent() {
                 <CardContent>
                     <div className="flex flex-col gap-6">
                         <div className="grid gap-2">
-                            <Label htmlFor="email">Email</Label>
+                            <Label htmlFor="email">Email <span className="text-destructive">*</span> </Label>
                             <Input
                                 id="email"
                                 type="email"
@@ -31,7 +31,7 @@ function LoginComponent() {
                         </div>
                         <div className="grid gap-2">
                             <div className="flex items-center">
-                                <Label htmlFor="password">Password</Label>
+                                <Label htmlFor="password">Password <span className="text-destructive">*</span> </Label>
                                 <a
                                     href="#"
                                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"

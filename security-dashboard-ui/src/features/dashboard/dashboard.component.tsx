@@ -1,3 +1,4 @@
+import TopBarComponent from "@/components/top-bar/top-bar.component";
 import DashboardGraphComponent from "./dashboard-graph.component"
 import DashboardStatComponent from "./dashboard-stat.component"
 
@@ -22,6 +23,7 @@ function DashboardComponent() {
 
     return (
         <section className="w-full flex flex-col gap-4">
+             <TopBarComponent />
             <DashboardStatComponent />
             <section className="flex gap-4 justify-between p-2">
                 {

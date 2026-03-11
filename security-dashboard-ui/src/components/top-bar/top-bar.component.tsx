@@ -8,6 +8,18 @@ function TopBarComponent() {
         year: "numeric",
     });
 
+    function getGreeting() {
+        const hour = time.getHours();
+
+        if (hour < 12) {
+            return "Good Morning";
+        } else if (hour < 17) {
+            return "Good Afternoon";
+        } else {
+            return "Good Evening";
+        }
+    }
+
     useEffect(() => {
         const timer = setInterval(() => {
             setTime(new Date());
@@ -20,7 +32,7 @@ function TopBarComponent() {
         <article className="flex justify-between p-2 items-center bg-white">
             <h5 className="font-bold text-lg">Dashboard</h5>
             <article className="flex flex-col">
-                <div className="font-bold text-gray-600">Good evening, <span className="text-black">Leo</span></div>
+                <div className="font-bold text-gray-600">{getGreeting()}, <span className="text-black">Leo</span></div>
                 <div className="text-gray-400 text-sm">{formattedDate}, {time.toLocaleTimeString()}</div>
             </article>
         </article>
