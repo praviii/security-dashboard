@@ -28,3 +28,12 @@ func (r *Repository) GetUser(id int) (u.User, error) {
 	}
 	return u.User{}, errors.New("Notfound user")
 }
+
+func (r *Repository) GetUserByMail(email string) (u.User, error) {
+	for _, value := range r.repo {
+		if value.Email == email {
+			return value, nil
+		}
+	}
+	return u.User{}, errors.New("Notfound user")
+}

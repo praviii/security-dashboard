@@ -3,11 +3,27 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label"
 import { useNavigate } from "react-router"
+import { useForm } from 'react-hook-form'
+import { login } from "./login.api";
 
 function LoginComponent() {
     const navigate = useNavigate();
+    const { register, handleSubmit } = useForm<{email: string, password: string}>();
+
+    const onSubmit = async (data: { email: string, password: string }) => {
+        try {
+            const res = await login(data);
+            if(res){
+                localStorage.setItem("token",res.token);
+                navigate('/dashboard')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
-        <form className="w-full h-full flex items-center justify-center">
+        <form className="w-full h-full flex items-center justify-center" onSubmit={handleSubmit(onSubmit)}>
             <Card className="min-w-120">
                 <CardHeader>
                     <div className="flex items-center gap-1 font-bold text-primary">
@@ -26,7 +42,7 @@ function LoginComponent() {
                                 id="email"
                                 type="email"
                                 placeholder="Enter email"
-                                required
+                                {...register("email")}
                             />
                         </div>
                         <div className="grid gap-2">
@@ -39,12 +55,12 @@ function LoginComponent() {
                                     Forgot your password?
                                 </a>
                             </div>
-                            <Input id="password" type="password" placeholder="Enter password" required />
+                            <Input id="password" type="password" placeholder="Enter password" {...register("password")} />
                         </div>
                     </div>
                 </CardContent>
                 <CardFooter className="flex-col gap-2">
-                    <Button type="submit" className="w-full cursor-pointer" onClick={() => navigate('dashboard')}>
+                    <Button type="submit" className="w-full cursor-pointer">
                         Login using password
                     </Button>
                     <Button variant="outline" className="w-full cursor-pointer">
